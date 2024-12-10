@@ -1,7 +1,9 @@
-# i5heu's Aliases
+# Musalias: i5heu's Aliases
 This is a collection of aliases and functions that I use.  
 A easy way to update these scripts is provided with `aliasup`.  
 Tools for Documentation are also included.  
+
+Musalias = Muse + aliases  
 
 [Install Aliases](#install-aliases)  
 [Legend](#Legend)
