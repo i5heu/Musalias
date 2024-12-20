@@ -80,6 +80,15 @@ recomp() {
     docker_compose logs -f
 }
 
+# will pull, build, down and up as deamon a docker compose, will remove orphans, and follow logs after up
+recompBuild() {
+    docker_compose pull
+    docker_compose build
+    docker_compose down
+    docker_compose up --remove-orphans -d
+    docker_compose logs -f
+}
+
 ################
 ## Filesystem ##
 ################
