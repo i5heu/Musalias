@@ -22,7 +22,6 @@ while getopts ":v:m" opt; do
             ;;
         m )
             LISTALIASES_MARKDOWN=true
-            echo "Markdown mode set"
             ;;
         \? )
             echo "Invalid option: -$OPTARG" >&2
@@ -52,10 +51,7 @@ if [ "$LISTALIASES_VERBOSE" = true ]; then
     fi
 
 elif [ "$LISTALIASES_MARKDOWN" = true ]; then
-    # Standard mode: list aliases and functions with their comments
-    echo "Hint: To output the entire aliases file with syntax highlighting, use the -v option."
-    echo "Available Aliases and Functions:"
-    echo "---------------------------------"
+    # Markdown mode: list aliases and functions with their comments
 
     # Path to the aliases file
     ALIASES_FILE="$HOME/.Musalias/aliases"
@@ -153,7 +149,7 @@ elif [ "$LISTALIASES_MARKDOWN" = true ]; then
     ' "$ALIASES_FILE"
     echo
 echo "
-## Legend
+### Legend
 Aliase marked with 👑 will call sudo"
     echo
 else

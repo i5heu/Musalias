@@ -156,5 +156,8 @@ listAliases() {
 # Update the aliases collection on your system
 alias aliasup='( cd ~/.Musalias && git pull ) && source ~/.Musalias/aliases'
 
+# replace the Aliases section in ~/.Musalias/README.md with the current listAliases -m output
+alias musaliasUpdateReadme='sh ~/.Musalias/update_readme.sh'
+
 
 source $HOME/.Musalias/helper

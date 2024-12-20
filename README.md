@@ -11,6 +11,7 @@ Musalias = Muse + aliases
 
 ## Aliases
 
+
 ### Kubernetes 
 - **k** - kubectl command shortcut that will use kubectl if available, otherwise it will use microk8s kubectl
 - **kubectl** - kubectl will use kubectl if available, otherwise it will use microk8s kubectl 
@@ -46,7 +47,7 @@ Options:
 
 ### System Administration 
 - **up** - Update, upgrade, dis-upgrade, and autoremove packages 👑
-- **install_default** - Install default packages: docker.io, docker-compose-v2, htop, iftop 👑
+- **install_default** - Install default packages: docker.io, docker-compose-v2, htop, iftop, fzf 👑
 
 ### Aliases (this script) Related 
 - **laa** - Alias for listAliases script
@@ -56,8 +57,9 @@ Options:
    - **-v** will show the aliases file not interactive
    - **-m** will print in markdown format not interactive
 - **aliasup** - Update the aliases collection on your system
+- **musaliasUpdateReadme** - replace the Aliases section in ~/.Musalias/README.md with the current listAliases -m output
 
-## Legend
+### Legend
 Aliase marked with 👑 will call sudo
 
 ## Install Aliases
