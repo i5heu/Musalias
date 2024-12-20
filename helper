@@ -1,0 +1,20 @@
+######################################
+########## HELPER FUNCTIONS ##########
+######################################
+### use tripple hash and space to not show in listAliases
+
+### Function to set the correct kubectl alias
+kubeTarget() {
+    # Check if kubectl is installed
+    if command -v kubectl >/dev/null 2>&1; then
+        # If kubectl is installed, use kubectl
+        kubectl "$@"
+    elif command -v microk8s >/dev/null 2>&1; then
+        # If microk8s is installed, use microk8s kubectl
+        microk8s kubectl "$@"
+    else
+        # If neither kubectl nor microk8s is available, print a warning
+        echo "Neither kubectl nor microk8s is installed. Please install one of them."
+        return 1
+    fi
+}

@@ -48,6 +48,14 @@ DEFAULT_EXCLUDES=(
 EXCLUDE_PATTERNS=("${DEFAULT_EXCLUDES[@]}")
 CLEAN_CONTENT=false
 
+# Output file
+OUTPUT_FILE="showContentsOutput.txt"
+if ! touch "$OUTPUT_FILE" 2>/dev/null; then
+    echo "Warning: Could not write to $OUTPUT_FILE. Will write to stdout." >&2
+else
+    exec 1> "$OUTPUT_FILE"
+fi
+
 # -------------------- Functions --------------------
 
 # Function to display usage
@@ -107,6 +115,7 @@ shift $((OPTIND -1))
 
 # Build the find command with exclude patterns
 FIND_CMD=(find . -type f)
+FIND_CMD+=(! -name "showContentsOutput.txt")
 for pattern in "${EXCLUDE_PATTERNS[@]}"; do
     FIND_CMD+=(! -path "./$pattern")
 done

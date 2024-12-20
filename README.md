@@ -10,7 +10,6 @@ Musalias = Muse + aliases
 
 
 ## Aliases
-
 ### Kubernetes 
 - **k** - kubectl command shortcut that will use kubectl if available, otherwise it will use microk8s kubectl
 - **kubectl** - kubectl will use kubectl if available, otherwise it will use microk8s kubectl 
@@ -32,11 +31,12 @@ Musalias = Muse + aliases
 - **dc** - shortcut for docker-compose or docker compose
 - **dcl** - shortcut for docker-compose or docker compose logs -f -n 500
 - **recomp** - will pull, down and up as deamon a docker compose, will remove orphans, and follow logs after up
+- **recompBuild** - will pull, build, down and up as deamon a docker compose, will remove orphans, and follow logs after up
 
 ### Filesystem 
 - **lh** - Listing all files with human-readable sizes
 - **dud** - Display the size of all folders in the current directory, sorted by size
-- **showContents** - Display all file contents in the current directory recursively   
+- **showContents** - Display all file contents in the current directory recursively and write to showContentsOutput.txt   
 Options:
    - **-c** Clean content by removing excessive whitespace and line breaks
    - **-e** Comma-separated list of glob patterns to exclude (overrides default excludes)
@@ -62,7 +62,7 @@ Aliase marked with 👑 will call sudo
 ## Install Aliases
 Go to homefolder and run this
 ```bash
-git clone https://github.com/i5heu/Musalias.git ~/.aliases && bash ~/.aliases/setup.sh && source ~/.aliases/aliases
+git clone https://github.com/i5heu/Musalias.git ~/.Musalias && bash ~/.Musalias/setup.sh && source ~/.Musalias/aliases
 ```
 
 To update use

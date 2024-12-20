@@ -99,7 +99,7 @@ alias lh='ls -lah'
 # Display the size of all folders in the current directory, sorted by size
 alias dud='du -hd 1 . | sort -hr'
 
-# Display all file contents in the current directory recursively Options: -c Clean content by removing excessive whitespace and line breaks -e Comma-separated list of glob patterns to exclude (overrides default excludes)
+# Display all file contents in the current directory recursively and write to showContentsOutput.txt Options: -c Clean content by removing excessive whitespace and line breaks -e Comma-separated list of glob patterns to exclude (overrides default excludes)
 alias showContents='~/.aliases/show_contents.sh'
 
 # Function to tar and compress a directory with ZSTD, $0 <directory> is required
@@ -141,29 +141,10 @@ alias laa='listAliases'
 alias aliasesList='listAliases'
 
 # List all available aliases and functions with their descriptions Options: -v will show the aliases file -m will print in markdown format
-alias listAliases='~/.aliases/listAliases.sh' 
+alias listAliases='~/.Musalias/listAliases.sh' 
 
 # Update the aliases collection on your system
-alias aliasup='( cd ~/.aliases && git pull ) && source ~/.aliases/aliases'
+alias aliasup='( cd ~/.Musalias && git pull ) && source ~/.Musalias/aliases'
 
 
-######################################
-########## HELPER FUNCTIONS ##########
-######################################
-### use tripple hash and space to not show in listAliases
-
-### Function to set the correct kubectl alias
-kubeTarget() {
-    # Check if kubectl is installed
-    if command -v kubectl >/dev/null 2>&1; then
-        # If kubectl is installed, use kubectl
-        kubectl "$@"
-    elif command -v microk8s >/dev/null 2>&1; then
-        # If microk8s is installed, use microk8s kubectl
-        microk8s kubectl "$@"
-    else
-        # If neither kubectl nor microk8s is available, print a warning
-        echo "Neither kubectl nor microk8s is installed. Please install one of them."
-        return 1
-    fi
-}
+source \$HOME/.Musalias/helper

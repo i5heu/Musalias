@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Function Description:
-# Lists all aliases and functions defined in the ~/.aliases/aliases file.
+# Lists all aliases and functions defined in the ~/.Musalias/aliases file.
 # Usage:
 #   listAliases        - Lists aliases and functions with their descriptions.
 #   listAliases -v     - Displays the entire aliases file with syntax highlighting.
@@ -36,7 +36,7 @@ shift $((OPTIND -1))
 if [ "$LISTALIASES_VERBOSE" = true ]; then
     # Verbose mode: display the entire aliases file with syntax highlighting
     if command -v highlight &> /dev/null; then
-        highlight -O ansi --syntax=sh "$HOME/.aliases/aliases"
+        highlight -O ansi --syntax=sh "$HOME/.Musalias/aliases"
     else
         printf "Error: No syntax highlighter found. Install 'highlight' to use verbose mode. For Debian-based distros use:\n"
         printf "sudo apt install highlight\n" >&2
@@ -58,7 +58,7 @@ elif [ "$LISTALIASES_MARKDOWN" = true ]; then
     echo "---------------------------------"
 
     # Path to the aliases file
-    ALIASES_FILE="$HOME/.aliases/aliases"
+    ALIASES_FILE="$HOME/.Musalias/aliases"
 
     # Check if the aliases file exists
     if [ ! -f "$ALIASES_FILE" ]; then
@@ -163,7 +163,7 @@ else
     echo "---------------------------------"
 
     # Path to the aliases file
-    ALIASES_FILE="$HOME/.aliases/aliases"
+    ALIASES_FILE="$HOME/.Musalias/aliases"
 
     # Check if the aliases file exists
     if [ ! -f "$ALIASES_FILE" ]; then

@@ -4,7 +4,7 @@
 # Description: Sets up the alias library by adding source lines to shell configuration files.
 
 # Source line to be added
-SOURCE_LINE="source \$HOME/.aliases/aliases"
+SOURCE_LINE="source \$HOME/.Musalias/aliases"
 
 # Function to add source line to a file if not already present
 add_source_line() {
@@ -18,9 +18,9 @@ add_source_line() {
 
     if ! grep -qxF "$line" "$file"; then
         echo "$line" >> "$file"
-        echo "Added sourcing of aliases to $file"
+        echo "Added sourcing of Musalias to $file"
     else
-        echo "Sourcing of aliases already exists in $file"
+        echo "Sourcing of Musalias already exists in $file"
     fi
 }
 
