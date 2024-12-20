@@ -62,7 +62,7 @@ Aliase marked with 👑 will call sudo
 ## Install Aliases
 Go to homefolder and run this
 ```bash
-git clone https://github.com/i5heu/aliases.git ~/.aliases && bash ~/.aliases/setup.sh && source ~/.aliases/aliases
+git clone https://github.com/i5heu/Musalias.git ~/.aliases && bash ~/.aliases/setup.sh && source ~/.aliases/aliases
 ```
 
 To update use
