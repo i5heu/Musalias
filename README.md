@@ -14,14 +14,14 @@ Musalias = Muse + aliases
 ### Kubernetes 
 - **k** - kubectl command shortcut that will use kubectl if available, otherwise it will use microk8s kubectl
 - **kubectl** - kubectl will use kubectl if available, otherwise it will use microk8s kubectl 
-- **kpf** - shortcut for to get rollout restart
-- **kls** - shortcut for to get all pods in all namespaces
-- **ksv** - shortcut for to get all services in all namespaces
-- **kdp** - shortcut for to get all deployments in all namespaces
-- **kn** - shortcut for to get all nodes
-- **kns** - shortcut for to get all namespaces
-- **kdh** - shortcut for to get rollout history
-- **kds** - shortcut for to get rollout status
+- **kpf** - shortcut to get rollout restart
+- **kls** - shortcut to get all pods in all namespaces
+- **ksv** - shortcut to get all services in all namespaces
+- **kdp** - shortcut to get all deployments in all namespaces
+- **kn** - shortcut to get all nodes
+- **kns** - shortcut to get all namespaces
+- **kdh** - shortcut to get rollout history
+- **kds** - shortcut to get rollout status
 
 ### MicroK8s 
 - **m8** - Starting MicroK8s
@@ -49,6 +49,7 @@ Options:
 
 ### Aliases (this script) Related 
 - **laa** - Alias for listAliases script
+- **aliasesList** - Alias for listAliases script
 - **listAliases** - List all available aliases and functions with their descriptions   
 Options:
    - **-v** will show the aliases file
