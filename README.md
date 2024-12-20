@@ -10,6 +10,7 @@ Musalias = Muse + aliases
 
 
 ## Aliases
+
 ### Kubernetes 
 - **k** - kubectl command shortcut that will use kubectl if available, otherwise it will use microk8s kubectl
 - **kubectl** - kubectl will use kubectl if available, otherwise it will use microk8s kubectl 
@@ -50,10 +51,10 @@ Options:
 ### Aliases (this script) Related 
 - **laa** - Alias for listAliases script
 - **aliasesList** - Alias for listAliases script
-- **listAliases** - List all available aliases and functions with their descriptions   
+- **listAliases** - List all available aliases and functions with their descriptions in fzf with fallback to less   
 Options:
-   - **-v** will show the aliases file
-   - **-m** will print in markdown format
+   - **-v** will show the aliases file not interactive
+   - **-m** will print in markdown format not interactive
 - **aliasup** - Update the aliases collection on your system
 
 ## Legend
@@ -63,6 +64,11 @@ Aliase marked with 👑 will call sudo
 Go to homefolder and run this
 ```bash
 git clone https://github.com/i5heu/Musalias.git ~/.Musalias && bash ~/.Musalias/setup.sh && source ~/.Musalias/aliases
+```
+
+Or with SSH
+```bash
+git clone git@github.com:i5heu/Musalias.git ~/.Musalias && bash ~/.Musalias/setup.sh && source ~/.Musalias/aliases
 ```
 
 To update use

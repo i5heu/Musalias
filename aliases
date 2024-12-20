@@ -140,11 +140,21 @@ alias laa='listAliases'
 # Alias for listAliases script
 alias aliasesList='listAliases'
 
-# List all available aliases and functions with their descriptions Options: -v will show the aliases file -m will print in markdown format
-alias listAliases='~/.Musalias/listAliases.sh' 
+# List all available aliases and functions with their descriptions in fzf with fallback to less Options: -v will show the aliases file not interactive -m will print in markdown format not interactive
+listAliases() {
+  if [[ "$1" == "-v" || "$1" == "-m" ]]; then
+    bash ~/.Musalias/listAliases.sh "$1"
+  else
+    if command -v fzf &>/dev/null; then
+      bash ~/.Musalias/listAliases.sh | fzf --ansi
+    else
+      bash ~/.Musalias/listAliases.sh | less -R
+    fi
+  fi
+}
 
 # Update the aliases collection on your system
 alias aliasup='( cd ~/.Musalias && git pull ) && source ~/.Musalias/aliases'
 
 
-source \$HOME/.Musalias/helper
+source $HOME/.Musalias/helper
