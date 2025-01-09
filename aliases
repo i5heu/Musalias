@@ -60,7 +60,7 @@ alias m8='microk8s'
 alias m8dp='microk8s dashboard-proxy'
 
 # Install MicroK8s by running the install script
-alias install_microk8='sh ~/.aliases/install_MicroK8s.sh'
+alias install_microk8='sh ~/.Musalias/install_MicroK8s.sh'
 
 ############
 ## Docker ##
@@ -100,7 +100,7 @@ alias lh='ls -lah'
 alias dud='du -hd 1 . | sort -hr'
 
 # Display all file contents in the current directory recursively and write to showContentsOutput.txt Options: -c Clean content by removing excessive whitespace and line breaks -e Comma-separated list of glob patterns to exclude (overrides default excludes)
-alias showContents='~/.aliases/show_contents.sh'
+alias showContents='~/.Musalias/show_contents.sh'
 
 # Function to tar and compress a directory with ZSTD, $0 <directory> is required
 tazstd() {
