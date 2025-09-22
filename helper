@@ -18,3 +18,22 @@ kubeTarget() {
         return 1
     fi
 }
+
+# Wrapper to support both `docker compose` (v2) and legacy `docker-compose` (v1)
+docker_compose() {
+    # If `docker` subcommand `compose` is available (Docker CLI v2+)
+    if command -v docker >/dev/null 2>&1 && docker compose version >/dev/null 2>&1; then
+        docker compose "$@"
+        return $?
+    fi
+
+    # Fallback to standalone `docker-compose` if available
+    if command -v docker-compose >/dev/null 2>&1; then
+        docker-compose "$@"
+        return $?
+    fi
+
+    # If neither is available, print helpful message and return failure
+    echo "Neither 'docker compose' (Docker CLI v2) nor 'docker-compose' (legacy) found in PATH. Please install one of them." >&2
+    return 127
+}
