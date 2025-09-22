@@ -60,7 +60,7 @@ alias m8='microk8s'
 alias m8dp='microk8s dashboard-proxy'
 
 # Install MicroK8s by running the install script
-alias install_microk8='sh ~/.Musalias/install_MicroK8s.sh'
+alias install_microk8='sh ~/.Musalias/scripts/install_MicroK8s.sh'
 
 ############
 ## Docker ##
@@ -100,7 +100,24 @@ alias lh='ls -lah'
 alias dud='du -hd 1 . | sort -hr'
 
 # Display all file contents in the current directory recursively and write to showContentsOutput.txt Options: -c Clean content by removing excessive whitespace and line breaks -e Comma-separated list of glob patterns to exclude (overrides default excludes)
-alias showContents='~/.Musalias/show_contents.sh'
+alias showContents='~/.Musalias/scripts/show_contents.sh'
+
+# Serve the current directory over HTTP. Options: -n Dry-run: print chosen port and exit -p <port> Start searching from specified port (default 8080)
+serve() {
+  # Pass arguments straight to the serve script. Examples:
+  #   serve           # start serving from 8080 or next free port
+  #   serve -n        # dry-run: print chosen port and exit
+  #   serve 3000      # start searching from port 3000
+
+  # Prefer the user's installed location
+  if [[ -x "$HOME/.Musalias/scripts/serve.sh" ]]; then
+    "$HOME/.Musalias/scripts/serve.sh" "$@"
+    return $?
+  fi
+
+  echo "serve.sh not found or not executable in $HOME/.Musalias or $SCRIPT_DIR" >&2
+  return 127
+}
 
 # Function to tar and compress a directory with ZSTD, $0 <directory> is required
 tazstd() {
@@ -143,21 +160,21 @@ alias aliasesList='listAliases'
 # List all available aliases and functions with their descriptions in fzf with fallback to less Options: -v will show the aliases file not interactive -m will print in markdown format not interactive
 listAliases() {
   if [[ "$1" == "-v" || "$1" == "-m" ]]; then
-    bash ~/.Musalias/listAliases.sh "$1"
+    bash ~/.Musalias/scripts/listAliases.sh "$1"
   else
     if command -v fzf &>/dev/null; then
-      bash ~/.Musalias/listAliases.sh | fzf --ansi --tac
+      bash ~/.Musalias/scripts/listAliases.sh | fzf --ansi --tac
     else
-      bash ~/.Musalias/listAliases.sh | less -R
+      bash ~/.Musalias/scripts/listAliases.sh | less -R
     fi
   fi
 }
 
 # Update the aliases collection on your system
-alias aliasup='( cd ~/.Musalias && git pull ) && source ~/.Musalias/aliases'
+alias aliasup='( cd ~/.Musalias && git pull ) && source ~/.Musalias/scripts/aliases'
 
-# replace the Aliases section in ~/.Musalias/README.md with the current listAliases -m output
-alias musaliasUpdateReadme='sh ~/.Musalias/update_readme.sh'
+# replace the Aliases section in ~/.Musalias/scripts/README.md with the current listAliases -m output
+alias musaliasUpdateReadme='sh ~/.Musalias/scripts/update_readme.sh'
 
 
 source $HOME/.Musalias/helper
