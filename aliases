@@ -115,7 +115,7 @@ serve() {
     return $?
   fi
 
-  echo "serve.sh not found or not executable in $HOME/.Musalias or $SCRIPT_DIR" >&2
+  echo "serve.sh not found or not executable in $HOME/.Musalias/scripts or $SCRIPT_DIR" >&2
   return 127
 }
 
