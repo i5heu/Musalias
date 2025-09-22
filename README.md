@@ -42,6 +42,10 @@ Musalias = Muse + aliases
 Options:
    - **-c** Clean content by removing excessive whitespace and line breaks
    - **-e** Comma-separated list of glob patterns to exclude (overrides default excludes)
+- **serve** - Serve the current directory over HTTP.   
+Options:
+   - **-n** Dry-run: print chosen port and exit
+   - **-p** <port> Start searching from specified port (default 8080)
 - **tazstd** - Function to tar and compress a directory with ZSTD, $0 <directory> is required
 - **mkdid** - Function to create directories recursively and navigate to the deepest directory, $0 <directory> is required
 
@@ -57,7 +61,7 @@ Options:
    - **-v** will show the aliases file not interactive
    - **-m** will print in markdown format not interactive
 - **aliasup** - Update the aliases collection on your system
-- **musaliasUpdateReadme** - replace the Aliases section in ~/.Musalias/README.md with the current listAliases -m output
+- **musaliasUpdateReadme** - replace the Aliases section in ~/.Musalias/scripts/README.md with the current listAliases -m output
 
 ### Legend
 Aliase marked with 👑 will call sudo
