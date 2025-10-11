@@ -32,6 +32,7 @@ Musalias = Muse + aliases
 ### Docker 
 - **dc** - shortcut for docker-compose or docker compose
 - **dcl** - shortcut for docker-compose or docker compose logs -f -n 500
+- **dcli** - If fzf is available you'll get a fuzzy selector; otherwise a numbered menu.
 - **recomp** - will pull, down and up as deamon a docker compose, will remove orphans, and follow logs after up
 - **recompBuild** - will pull, build, down and up as deamon a docker compose, will remove orphans, and follow logs after up
 
@@ -51,7 +52,10 @@ Options:
 
 ### System Administration 
 - **up** - Update, upgrade, dis-upgrade, and autoremove packages 👑
-- **install_default** - Install default packages: docker.io, docker-compose-v2, htop, iftop, fzf 👑
+- **install_default** - Install default packages one by one (docker.io, docker-compose-v2, htop, iftop, fzf, bottom) if some fail it shows a summary of failed installs at the end. 👑   
+Options:
+   - **--no-snap** Skip installing bottom via snap.
+   - **--dry-run** Print what would be done, but do not execute.
 
 ### Aliases (this script) Related 
 - **laa** - Alias for listAliases script

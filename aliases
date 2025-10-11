@@ -72,6 +72,10 @@ alias dc='docker_compose'
 # shortcut for docker-compose or docker compose logs -f -n 500
 alias dcl='docker_compose logs -f -n 500'
 
+# Interactive docker logs selector: will let you pick a service/container then follow logs
+# If fzf is available you'll get a fuzzy selector; otherwise a numbered menu.
+alias dcli='~/.Musalias/scripts/dcl_select.sh'
+
 # will pull, down and up as deamon a docker compose, will remove orphans, and follow logs after up
 recomp() {
     docker_compose pull
@@ -144,8 +148,8 @@ mkdid() {
 # Update, upgrade, dis-upgrade, and autoremove packages 👑
 alias up='sudo apt-get update && sudo apt-get -y full-upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove'
 
-# Install default packages: docker.io, docker-compose-v2, htop, iftop, fzf 👑
-alias install_default='sudo apt install -y docker.io docker-compose-v2 htop iftop fzf'
+# Install default packages one by one (docker.io, docker-compose-v2, htop, iftop, fzf, bottom) if some fail it shows a summary of failed installs at the end. 👑 Options: --no-snap Skip installing bottom via snap. --dry-run Print what would be done, but do not execute.
+alias install_default='bash ~/.Musalias/scripts/install_default.sh'
 
 ###################################
 ## Aliases (this script) Related ##
