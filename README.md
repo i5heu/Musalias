@@ -56,6 +56,7 @@ Options:
 Options:
    - **--no-snap** Skip installing bottom via snap.
    - **--dry-run** Print what would be done, but do not execute.
+- **top** - Alias for bottom resource monitor
 
 ### Aliases (this script) Related 
 - **laa** - Alias for listAliases script

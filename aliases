@@ -151,6 +151,9 @@ alias up='sudo apt-get update && sudo apt-get -y full-upgrade && sudo apt-get -y
 # Install default packages one by one (docker.io, docker-compose-v2, htop, iftop, fzf, bottom) if some fail it shows a summary of failed installs at the end. 👑 Options: --no-snap Skip installing bottom via snap. --dry-run Print what would be done, but do not execute.
 alias install_default='bash ~/.Musalias/scripts/install_default.sh'
 
+# Alias for bottom resource monitor
+alias top='bottom'
+
 ###################################
 ## Aliases (this script) Related ##
 ###################################
