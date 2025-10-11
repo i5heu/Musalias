@@ -9,6 +9,9 @@ Musalias = Muse + aliases
 [Legend](#Legend)
 
 
+## Hotkeys for ZSH
+- `ALT + A` - Will open the listAliases selector
+
 ## Aliases
 
 

@@ -1,12 +1,15 @@
 #!/bin/bash
 
 # Script Name: setup.sh
-# Description: Sets up the alias library by adding source lines to shell configuration files.
+# Description: Sets up the alias library by adding source lines to shell configuration files (idempotent).
 
-# Source line to be added
+set -u
+
+# Source line to be added (literal $HOME in rc files)
 SOURCE_LINE="source \$HOME/.Musalias/aliases"
 
-# Function to add source line to a file if not already present
+# Append a line to a file iff it's not already present (exact match).
+# Ensures there's a trailing newline before appending to avoid line-gluing.
 add_source_line() {
     local file="$1"
     local line="$2"
@@ -17,52 +20,61 @@ add_source_line() {
     fi
 
     if ! grep -qxF "$line" "$file"; then
-        echo "$line" >> "$file"
+        # ensure file ends with a newline before appending (if not empty)
+        if [ -s "$file" ] && [ -n "$(tail -c1 "$file" 2>/dev/null || printf x)" ] && [ "$(tail -c1 "$file" 2>/dev/null)" != $'\n' ]; then
+            printf '\n' >> "$file"
+        fi
+        printf '%s\n' "$line" >> "$file"
         echo "Added sourcing of Musalias to $file"
     else
         echo "Sourcing of Musalias already exists in $file"
     fi
 }
 
-# Add to .bashrc
+# ------------------ Bash ------------------
+
+# Always add to .bashrc
 add_source_line "$HOME/.bashrc" "$SOURCE_LINE"
 
-# Determine appropriate profile file for bash
-if [ -f "$HOME/.bash_profile" ]; then
+# Choose a bash profile file (if present)
+if   [ -f "$HOME/.bash_profile" ]; then
     PROFILE_FILE="$HOME/.bash_profile"
 elif [ -f "$HOME/.profile" ]; then
     PROFILE_FILE="$HOME/.profile"
 else
-    PROFILE_FILE="$HOME/.bashrc"
+    PROFILE_FILE=""
 fi
 
-# Add sourcing to bash profile file
-add_source_line "$PROFILE_FILE" "source \$HOME/.bashrc"
-
-# Reload the bash profile
-if [ -n "$PROFILE_FILE" ]; then
-    source "$PROFILE_FILE"
-    echo "Reloaded $PROFILE_FILE"
+# If a profile exists, ensure it sources .bashrc (idempotent)
+if [ -n "${PROFILE_FILE}" ]; then
+    add_source_line "$PROFILE_FILE" "source \$HOME/.bashrc"
 fi
 
-# Check if the user is using zsh
-if [ -n "$ZSH_VERSION" ]; then
-    # Add to .zshrc
-    add_source_line "$HOME/.zshrc" "$SOURCE_LINE"
-
-    # Determine appropriate zsh profile file
-    if [ -f "$HOME/.zprofile" ]; then
-        ZPROFILE_FILE="$HOME/.zprofile"
-    else
-        ZPROFILE_FILE="$HOME/.zshrc"
-    fi
-
-    # Add sourcing to zsh profile file
-    add_source_line "$ZPROFILE_FILE" "source \$HOME/.zshrc"
-
-    # Reload the zsh profile
-    if [ -n "$ZPROFILE_FILE" ]; then
-        source "$ZPROFILE_FILE"
-        echo "Reloaded $ZPROFILE_FILE"
-    fi
+# Reload bash rc only when we are currently in an interactive bash
+if [ -n "${BASH_VERSION:-}" ] && [ -n "${PS1:-}" ]; then
+    # shellcheck disable=SC1090
+    source "$HOME/.bashrc"
+    echo "Reloaded ~/.bashrc"
 fi
+
+# --- zsh support (works even when run from bash) ---
+ZDOTDIR_PATH="${ZDOTDIR:-$HOME}"
+ZSHRC="$ZDOTDIR_PATH/.zshrc"
+ZPROFILE="$ZDOTDIR_PATH/.zprofile"
+
+# Always add Musalias aliases and hints to zshrc
+add_source_line "$ZSHRC" "source \$HOME/.Musalias/aliases"
+add_source_line "$ZSHRC" "source \$HOME/.Musalias/scripts/zsh_picker_integration.sh"
+
+if [ -f "$ZPROFILE" ]; then
+  add_source_line "$ZPROFILE" "source \$HOME/.zshrc"
+fi
+
+if [ -n "${ZSH_VERSION:-}" ]; then
+  # shellcheck disable=SC1090
+  source "$ZSHRC"
+  echo "Reloaded $ZSHRC"
+fi
+
+
+echo "✅ Musalias setup complete."
