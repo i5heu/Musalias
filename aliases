@@ -69,6 +69,9 @@ alias install_microk8='sh ~/.Musalias/scripts/install_MicroK8s.sh'
 # shortcut for docker-compose or docker compose
 alias dc='docker_compose'
 
+# shortcut for docker-compose or docker compose down
+alias dcd='docker_compose down'
+
 # shortcut for docker-compose or docker compose logs -f -n 500
 alias dcl='docker_compose logs -f -n 500'
 

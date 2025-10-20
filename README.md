@@ -34,6 +34,7 @@ Musalias = Muse + aliases
 
 ### Docker 
 - **dc** - shortcut for docker-compose or docker compose
+- **dcd** - shortcut for docker-compose or docker compose down
 - **dcl** - shortcut for docker-compose or docker compose logs -f -n 500
 - **dcls** - If fzf is available you'll get a fuzzy selector; otherwise a numbered menu.
 - **recomp** - will pull, down and up as deamon a docker compose, will remove orphans, and follow logs after up
