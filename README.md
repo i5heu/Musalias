@@ -9,6 +9,9 @@ Musalias = Muse + aliases
 [Legend](#Legend)
 
 
+## Hotkeys for ZSH
+- `ALT + A` - Will open the listAliases selector
+
 ## Aliases
 
 
@@ -31,7 +34,9 @@ Musalias = Muse + aliases
 
 ### Docker 
 - **dc** - shortcut for docker-compose or docker compose
+- **dcd** - shortcut for docker-compose or docker compose down
 - **dcl** - shortcut for docker-compose or docker compose logs -f -n 500
+- **dcls** - If fzf is available you'll get a fuzzy selector; otherwise a numbered menu.
 - **recomp** - will pull, down and up as deamon a docker compose, will remove orphans, and follow logs after up
 - **recompBuild** - will pull, build, down and up as deamon a docker compose, will remove orphans, and follow logs after up
 
@@ -42,12 +47,20 @@ Musalias = Muse + aliases
 Options:
    - **-c** Clean content by removing excessive whitespace and line breaks
    - **-e** Comma-separated list of glob patterns to exclude (overrides default excludes)
+- **serve** - Serve the current directory over HTTP.   
+Options:
+   - **-n** Dry-run: print chosen port and exit
+   - **-p** <port> Start searching from specified port (default 8080)
 - **tazstd** - Function to tar and compress a directory with ZSTD, $0 <directory> is required
 - **mkdid** - Function to create directories recursively and navigate to the deepest directory, $0 <directory> is required
 
 ### System Administration 
 - **up** - Update, upgrade, dis-upgrade, and autoremove packages 👑
-- **install_default** - Install default packages: docker.io, docker-compose-v2, htop, iftop, fzf 👑
+- **install_default** - Install default packages one by one (docker.io, docker-compose-v2, htop, iftop, fzf, bottom) if some fail it shows a summary of failed installs at the end. 👑   
+Options:
+   - **--no-snap** Skip installing bottom via snap.
+   - **--dry-run** Print what would be done, but do not execute.
+- **top** - Alias for bottom resource monitor
 
 ### Aliases (this script) Related 
 - **laa** - Alias for listAliases script
@@ -57,7 +70,7 @@ Options:
    - **-v** will show the aliases file not interactive
    - **-m** will print in markdown format not interactive
 - **aliasup** - Update the aliases collection on your system
-- **musaliasUpdateReadme** - replace the Aliases section in ~/.Musalias/README.md with the current listAliases -m output
+- **musaliasUpdateReadme** - replace the Aliases section in ~/.Musalias/scripts/README.md with the current listAliases -m output
 
 ### Legend
 Aliase marked with 👑 will call sudo

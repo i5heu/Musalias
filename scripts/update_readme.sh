@@ -3,7 +3,7 @@
 echo "Updating README.md..."
 
 TMP_FILE="$(mktemp)"
-"$HOME/.Musalias/listAliases.sh" -m > "$TMP_FILE"
+"$HOME/.Musalias/scripts/listAliases.sh" -m > "$TMP_FILE"
 
 README="$HOME/.Musalias/README.md"
 
