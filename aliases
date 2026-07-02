@@ -145,7 +145,7 @@ mkdid() {
 alias up='sudo apt-get update && sudo apt-get -y full-upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove'
 
 # Install default packages: docker.io, docker-compose-v2, htop, iftop, fzf 👑
-alias install_default='sudo apt install -y docker.io docker-compose-v2 htop iftop fzf'
+alias install_default='sudo apt install -y docker.io docker-compose-v2 docker-buildx htop iftop fzf vnstat nload'
 
 ###################################
 ## Aliases (this script) Related ##
