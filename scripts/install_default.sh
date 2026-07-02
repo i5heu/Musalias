@@ -11,7 +11,7 @@ COLOR_ERROR="\033[1;31m"   # Bold Red
 COLOR_SUCCESS="\033[1;32m" # Bold Green
 COLOR_WARN="\033[1;33m"    # Bold Yellow
 
-APT_PKGS=(docker.io docker-compose-v2 htop iftop fzf)
+APT_PKGS=(docker.io docker-compose-v2 docker-buildx htop iftop fzf nload vnstat)
 DO_SNAP=1
 DRY_RUN=0
 
